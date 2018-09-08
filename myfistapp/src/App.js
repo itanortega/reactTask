@@ -2,14 +2,32 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Navigation from './components/Navigation';
+import { todos } from './todos.json';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      todos
+    }
+  }
   render() {
+    const todos = this.state.todos.map((todo, i) => {
+      return (
+        <div className="card">
+          { todo.title }
+        </div>
+      )
+    })
+
     return (
       <div className="App">
-        <Navigation titulo="prueba"/>
-        <Navigation titulo="Mi primera navegación"/>
+        <nav className="navbar navbar-dark bg-dark">
+          <a href="" className="text-white">
+              Tareas 
+          </a>
+        </nav>
+        { todos }
         <img src={logo} className="App-logo" alt="logo" />
       </div>
     );
